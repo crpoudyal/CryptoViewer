@@ -1,4 +1,4 @@
-import 'package:cryptoviewer/screen/home_screen.dart';
+import 'package:cryptoviewer/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
