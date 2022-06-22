@@ -6,6 +6,10 @@ class MarketData with ChangeNotifier {
   bool isLoading = true;
   List<CryptoCurrency> market = [];
 
+  MarketData() {
+    getData();
+  }
+
   void getData() async {
     List<dynamic> _market = await APICall.getMarketsData();
 

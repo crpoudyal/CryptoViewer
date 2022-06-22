@@ -1,5 +1,7 @@
+import 'package:cryptoviewer/providers/marketdata.dart';
 import 'package:cryptoviewer/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,10 +12,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Crypto Viewer',
-      debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<MarketData>(
+          create: (context) => MarketData(),
+        )
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Crypto Viewer',
+        home: HomeScreen(),
+      ),
     );
   }
 }
