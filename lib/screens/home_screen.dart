@@ -56,9 +56,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                   currentCrypto.image!,
                                 ),
                               ),
-                              title: Text(currentCrypto.name!),
+                              title: Text("${currentCrypto.name!}#${currentCrypto.marketCapRank!}"),
                               trailing: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
                                     "रू ${currentCrypto.currentPrice!.toStringAsFixed(4)}",
@@ -67,26 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         fontSize: 18,
                                         color: Colors.blue),
                                   ),
-                                  Builder(builder: (context) {
-                                    double priceChange =
-                                        currentCrypto.priceChange24!;
-                                    double priceChangePercentage =
-                                        currentCrypto.priceChangePercentage24!;
-
-                                    if (priceChange < 0) {
-                                      // negative
-                                      return Text(
-                                        "${priceChangePercentage.toStringAsFixed(2)}% (${priceChange.toStringAsFixed(4)})",
-                                        style: TextStyle(color: Colors.red),
-                                      );
-                                    } else {
-                                      // positive
-                                      return Text(
-                                        "+${priceChangePercentage.toStringAsFixed(2)}% (+${priceChange.toStringAsFixed(4)})",
-                                        style: TextStyle(color: Colors.green),
-                                      );
-                                    }
-                                  })
+                                  priceBuilder(currentCrypto),
                                 ],
                               ),
                             );
@@ -112,5 +94,26 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  Builder priceBuilder(CryptoCurrency currentCrypto) {
+    return Builder(builder: (context) {
+      double priceChange = currentCrypto.priceChange24!;
+      double priceChangePercentage = currentCrypto.priceChangePercentage24!;
+
+      if (priceChange < 0) {
+        // negative
+        return Text(
+          "${priceChangePercentage.toStringAsFixed(2)}% (${priceChange.toStringAsFixed(4)})",
+          style: TextStyle(color: Colors.red),
+        );
+      } else {
+        // positive
+        return Text(
+          "+${priceChangePercentage.toStringAsFixed(2)}% (+${priceChange.toStringAsFixed(4)})",
+          style: TextStyle(color: Colors.green),
+        );
+      }
+    });
   }
 }
