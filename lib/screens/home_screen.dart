@@ -57,12 +57,37 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                               title: Text(currentCrypto.name!),
-                              trailing: Text(
-                                "रू ${currentCrypto.currentPrice!.toStringAsFixed(4)}",
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 18,
-                                    color: Colors.blue),
+                              trailing: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "रू ${currentCrypto.currentPrice!.toStringAsFixed(4)}",
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                        color: Colors.blue),
+                                  ),
+                                  Builder(builder: (context) {
+                                    double priceChange =
+                                        currentCrypto.priceChange24!;
+                                    double priceChangePercentage =
+                                        currentCrypto.priceChangePercentage24!;
+
+                                    if (priceChange < 0) {
+                                      // negative
+                                      return Text(
+                                        "${priceChangePercentage.toStringAsFixed(2)}% (${priceChange.toStringAsFixed(4)})",
+                                        style: TextStyle(color: Colors.red),
+                                      );
+                                    } else {
+                                      // positive
+                                      return Text(
+                                        "+${priceChangePercentage.toStringAsFixed(2)}% (+${priceChange.toStringAsFixed(4)})",
+                                        style: TextStyle(color: Colors.green),
+                                      );
+                                    }
+                                  })
+                                ],
                               ),
                             );
                           },
