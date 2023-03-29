@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:cryptoviewer/models/API_call.dart';
+import 'package:cryptoviewer/models/api_call.dart';
 import 'package:cryptoviewer/models/cryptocurrency.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +24,7 @@ class MarketData with ChangeNotifier {
     market = temp;
     isLoading = false;
     notifyListeners();
-    Timer(Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 3), () {
       getData();
     });
   }

@@ -56,7 +56,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   currentCrypto.image!,
                                 ),
                               ),
-                              title: Text("${currentCrypto.name!}#${currentCrypto.marketCapRank!}"),
+                              title: Text(
+                                  "#${currentCrypto.marketCapRank!} ${currentCrypto.name!}"),
                               trailing: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.end,

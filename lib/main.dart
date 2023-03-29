@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
             theme: lightTheme,
             darkTheme: darkTheme,
             title: 'Crypto Viewer',
-            home: HomeScreen(),
+            home: const HomeScreen(),
           );
         },
       ),
